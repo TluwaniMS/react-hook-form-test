@@ -8,3 +8,41 @@
 .login-view-icon {
   font-size: 140px;
 }
+
+.login-form-container {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 320px;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.input-container {
+  margin-bottom: 14px;
+}
+
+.login-button-container button {
+  background-color: white;
+  color: black;
+  border: 2px solid #08d;
+  transition-duration: 0.4s;
+}
+
+.login-button-container button:hover {
+  background-color: #08d;
+  color: white;
+  cursor: pointer;
+}
