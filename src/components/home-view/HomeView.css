@@ -1,7 +1,17 @@
 .main-content-cointainer {
   display: flex;
   flex-direction: column;
-  margin: 30%;
+  margin: 10%;
+}
+
+.icon-container {
+  font-size: 184px;
+}
+
+.home-view-text {
+  margin: 50px;
+  font-size: 30px;
+  font-weight: bold;
 }
 
 a {
@@ -44,4 +54,8 @@ a {
   background-color: #008cba;
   color: white;
   cursor: pointer;
+}
+
+.navigation-icon {
+  margin-left: 8px;
 }
