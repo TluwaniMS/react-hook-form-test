@@ -1,7 +1,7 @@
 import React from "react";
 
 const SuccessDisplay = () => {
-  return <div>$0</div>;
+  return <div>Success display works!!!</div>;
 };
 
 export default SuccessDisplay;

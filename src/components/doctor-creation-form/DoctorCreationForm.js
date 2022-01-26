@@ -1,7 +1,7 @@
 import React from "react";
 
 const DoctorCreationForm = () => {
-  return <div>$0</div>;
+  return <div>Doctors creation form works!!!</div>;
 };
 
 export default DoctorCreationForm;
