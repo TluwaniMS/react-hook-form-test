@@ -1,0 +1,15 @@
+.main-doctor-creation-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+
+.doctors-view-icon {
+  font-size: 184px;
+}
+
+.doctors-view-text {
+  margin: 50px;
+  font-size: 30px;
+  font-weight: bold;
+}
