@@ -1,0 +1,10 @@
+.main-login-form-container {
+  display: flex;
+  flex-direction: column;
+  margin: 4%;
+  align-items: center;
+}
+
+.login-view-icon {
+  font-size: 140px;
+}
