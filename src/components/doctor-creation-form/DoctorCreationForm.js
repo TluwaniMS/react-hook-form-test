@@ -1,13 +1,36 @@
 import React from "react";
+import * as yup from "yup";
 import ResponseHandler from "../response-handler/ResponseHandler";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserMd, faArrowLeft, faUndoAlt } from "@fortawesome/free-solid-svg-icons";
 import { specialties } from "../../display-support/specialties-support";
 import { genders } from "../../display-support/gender-support";
 import "./DoctorCreationForm.css";
-import { useNavigate } from "react-router-dom";
 
 const DoctorCreationForm = () => {
+  const schema = yup.object({
+    name: yup.string().required(),
+    surname: yup.string().required(),
+    email: yup.string().email().required(),
+    gender: yup.string().required(),
+    specialty: yup.string().required()
+  });
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm({ resolver: yupResolver(schema) });
+
+  const createDoctor = (data) => {
+    reset();
+    console.log(data);
+  };
+
   const navigate = useNavigate();
 
   const navigateHome = () => {
@@ -34,18 +57,18 @@ const DoctorCreationForm = () => {
       </div>
       <div className="doctors-view-text">Add a doctor to the directrory</div>
       <div className="doctor-creation-form-container ">
-        <form className="form-input-container">
+        <form onSubmit={handleSubmit(createDoctor)} className="form-input-container">
           <div className="input-container">
-            <input placeholder="name" className="input"></input>
+            <input placeholder="name" className="input" {...register("name")}></input>
           </div>
           <div className="input-container">
-            <input placeholder="surname" className="input"></input>
+            <input placeholder="surname" className="input" {...register("surname")}></input>
           </div>
           <div className="input-container">
-            <input placeholder="email" className="input"></input>
+            <input placeholder="email" className="input" {...register("email")}></input>
           </div>
           <div className="input-container">
-            <select>
+            <select {...register("specialty")}>
               {specialties.map((specialty) => (
                 <option key={specialty.label} value={specialty.value}>
                   {specialty.label}
@@ -54,7 +77,7 @@ const DoctorCreationForm = () => {
             </select>
           </div>
           <div className="input-container">
-            <select>
+            <select {...register("gender")}>
               {genders.map((gender) => (
                 <option key={gender.label} value={gender.value}>
                   {gender.label}
@@ -63,7 +86,7 @@ const DoctorCreationForm = () => {
             </select>
           </div>
           <div className="doctors-creation-button-container">
-            <button>submit</button>
+            <button type="submit">submit</button>
           </div>
           <div className="form-refresh-container">
             <FontAwesomeIcon icon={faUndoAlt} />
