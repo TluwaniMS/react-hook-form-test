@@ -31,6 +31,8 @@ const DoctorCreationForm = () => {
     console.log(data);
   };
 
+  const resetFormFields = () => reset();
+
   const navigate = useNavigate();
 
   const navigateHome = () => {
@@ -89,7 +91,7 @@ const DoctorCreationForm = () => {
             <button type="submit">submit</button>
           </div>
           <div className="form-refresh-container">
-            <FontAwesomeIcon icon={faUndoAlt} />
+            <FontAwesomeIcon icon={faUndoAlt} onClick={() => resetFormFields()} />
           </div>
         </form>
       </div>
