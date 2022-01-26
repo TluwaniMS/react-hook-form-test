@@ -1,7 +1,8 @@
 .main-doctor-creation-form-container {
   display: flex;
   flex-direction: column;
-  margin: 10%;
+  margin: 4%;
+  align-items: center;
 }
 
 button {
@@ -34,11 +35,78 @@ button {
 }
 
 .doctors-view-icon {
-  font-size: 184px;
+  font-size: 140px;
 }
 
 .doctors-view-text {
-  margin: 50px;
+  margin-bottom: 22px;
   font-size: 30px;
   font-weight: bold;
+}
+
+.doctor-creation-form-container {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 320px;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.input-container {
+  margin-bottom: 14px;
+}
+
+select {
+  background-color: #303245;
+  box-sizing: border-box;
+  border-radius: 12px;
+  color: #eee;
+  padding: 10px;
+  width: 15rem;
+}
+
+.form-refresh-container {
+  color: #eee;
+  cursor: pointer;
+  margin-top: 18px;
+}
+
+.doctors-creation-button-container button {
+  background-color: white;
+  color: black;
+  border: 2px solid #08d;
+  transition-duration: 0.4s;
+}
+
+.doctors-creation-button-container button:hover {
+  background-color: #08d;
+  color: white;
+  cursor: pointer;
+}
+
+.form-refresh-container {
+  transition-duration: 0.4s;
+}
+
+.form-refresh-container:hover {
+  font-size: 20px;
 }
