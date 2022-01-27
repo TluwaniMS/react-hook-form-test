@@ -11,6 +11,8 @@ import { faArrowLeft, faSignInAlt, faUndoAlt } from "@fortawesome/free-solid-svg
 import { LOGIN } from "../../mutations/login.mutation";
 import { useMutation } from "@apollo/client";
 
+import { Operations } from "../../display-support/operations-support";
+
 const LoginForm = () => {
   const [authenticateUserWithPassword, { data, loading, error }] = useMutation(LOGIN);
 
@@ -40,8 +42,7 @@ const LoginForm = () => {
   };
 
   if (data) {
-    console.log(data.authenticateUserWithPassword.__typename);
-    return <div>User authenticated successfully!!</div>;
+    return <ResponseHandler data={data.authenticateUserWithPassword.__typename} operation={Operations.Login} />;
   }
 
   if (error) {
