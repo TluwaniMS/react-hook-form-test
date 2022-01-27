@@ -8,7 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faSignInAlt, faUndoAlt } from "@fortawesome/free-solid-svg-icons";
 
+import { LOGIN } from "../../mutations/login.mutation";
+import { useMutation } from "@apollo/client";
+
 const LoginForm = () => {
+  const [authenticateUserWithPassword, { data, loading, error }] = useMutation(LOGIN);
+
   const schema = yup.object({
     email: yup.string().email("Please enter a valid email").required("Email is required"),
     password: yup.string().required("Password is required")
@@ -22,8 +27,8 @@ const LoginForm = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const login = (data) => {
+    authenticateUserWithPassword({ variables: { email: data.email, password: data.password } });
     reset();
-    console.log(data);
   };
 
   const resetFormFields = () => reset();
@@ -33,6 +38,17 @@ const LoginForm = () => {
   const navigateHome = () => {
     navigate("/");
   };
+
+  if (data) {
+    console.log(data.authenticateUserWithPassword.__typename);
+    return <div>User authenticated successfully!!</div>;
+  }
+
+  if (error) {
+    console.log(error);
+    return <div>There was an error authenticating this user</div>;
+  }
+
   return (
     <div className="main-login-form-container">
       <div>
