@@ -8,9 +8,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserMd, faArrowLeft, faUndoAlt } from "@fortawesome/free-solid-svg-icons";
 import { specialties } from "../../display-support/specialties-support";
 import { genders } from "../../display-support/gender-support";
+import { CREATE_DOCTOR } from "../../mutations/doctor.mutation";
+import { useMutation } from "@apollo/client";
 import "./DoctorCreationForm.css";
 
+
+
+import { Operations } from "../../display-support/operations-support";
+
 const DoctorCreationForm = () => {
+  const [createDoctor, { data, loading, error }] = useMutation(CREATE_DOCTOR);
+
   const schema = yup.object({
     name: yup.string().required("Name is required"),
     surname: yup.string().required("Surname is required"),
@@ -26,9 +34,17 @@ const DoctorCreationForm = () => {
     formState: { errors }
   } = useForm({ resolver: yupResolver(schema) });
 
-  const createDoctor = (data) => {
+  const submitDoctorCreation = (data) => {
+    createDoctor({
+      variables: {
+        name: data.name,
+        surname: data.surname,
+        email: data.email,
+        gender: data.gender,
+        specialty: data.specialty
+      }
+    });
     reset();
-    console.log(data);
   };
 
   const resetFormFields = () => reset();
@@ -39,7 +55,13 @@ const DoctorCreationForm = () => {
     navigate("/");
   };
 
-  const default_gender_selection = { value: null, label: "select gender" };
+  if (data) {
+    return <ResponseHandler data={data.createDoctor} operation={Operations.DoctorCreation} />;
+  }
+
+  if (error) {
+    return <div>There was an error creating the doctor..</div>;
+  }
 
   return (
     <div className="main-doctor-creation-form-container">
@@ -61,7 +83,7 @@ const DoctorCreationForm = () => {
       </div>
       <div className="doctors-view-text">Add a doctor to the directrory</div>
       <div className="doctor-creation-form-container ">
-        <form onSubmit={handleSubmit(createDoctor)} className="form-input-container">
+        <form onSubmit={handleSubmit(submitDoctorCreation)} className="form-input-container">
           <div className="input-container">
             <input placeholder="name" className="input" {...register("name")}></input>
             {errors.name?.message}
@@ -88,7 +110,7 @@ const DoctorCreationForm = () => {
             {errors.specialty?.message}
           </div>
           <div className="input-container">
-            <select {...register("gender")} options={genders}>
+            <select {...register("gender")} >
               <option value="" selected hidden>
                 select gender
               </option>

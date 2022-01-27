@@ -18,6 +18,8 @@ const ResponseHandler = ({ operation, data }) => {
         {!AuthenticationSuccessful && <ErrorDisplay operation={operation} />}
       </div>
     );
+  } else {
+    return <SuccessDisplay operation={operation} data={data} />;
   }
 };
 
