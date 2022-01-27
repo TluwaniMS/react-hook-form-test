@@ -39,6 +39,8 @@ const DoctorCreationForm = () => {
     navigate("/");
   };
 
+  const default_gender_selection = { value: null, label: "select gender" };
+
   return (
     <div className="main-doctor-creation-form-container">
       <div className="back-button-container">
@@ -74,6 +76,9 @@ const DoctorCreationForm = () => {
           </div>
           <div className="input-container">
             <select {...register("specialty")}>
+              <option value="" selected hidden>
+                select specialty
+              </option>
               {specialties.map((specialty) => (
                 <option key={specialty.label} value={specialty.value}>
                   {specialty.label}
@@ -83,7 +88,10 @@ const DoctorCreationForm = () => {
             {errors.specialty?.message}
           </div>
           <div className="input-container">
-            <select {...register("gender")}>
+            <select {...register("gender")} options={genders}>
+              <option value="" selected hidden>
+                select gender
+              </option>
               {genders.map((gender) => (
                 <option key={gender.label} value={gender.value}>
                   {gender.label}
