@@ -14,7 +14,7 @@ const ResponseHandler = ({ operation, data }) => {
 
     return (
       <div>
-        {AuthenticationSuccessful && <SuccessDisplay />}
+        {AuthenticationSuccessful && <SuccessDisplay operation={operation} />}
         {!AuthenticationSuccessful && <ErrorDisplay />}
       </div>
     );
