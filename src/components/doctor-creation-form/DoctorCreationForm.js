@@ -12,11 +12,11 @@ import "./DoctorCreationForm.css";
 
 const DoctorCreationForm = () => {
   const schema = yup.object({
-    name: yup.string().required(),
-    surname: yup.string().required(),
-    email: yup.string().email().required(),
-    gender: yup.string().required(),
-    specialty: yup.string().required()
+    name: yup.string().required("Name is required"),
+    surname: yup.string().required("Surname is required"),
+    email: yup.string().email("Please enter a valid email").required("Email is required"),
+    gender: yup.string().required("Gender is required"),
+    specialty: yup.string().required("Specialty is required")
   });
 
   const {
@@ -62,12 +62,15 @@ const DoctorCreationForm = () => {
         <form onSubmit={handleSubmit(createDoctor)} className="form-input-container">
           <div className="input-container">
             <input placeholder="name" className="input" {...register("name")}></input>
+            {errors.name?.message}
           </div>
           <div className="input-container">
             <input placeholder="surname" className="input" {...register("surname")}></input>
+            {errors.surname?.message}
           </div>
           <div className="input-container">
             <input placeholder="email" className="input" {...register("email")}></input>
+            {errors.email?.message}
           </div>
           <div className="input-container">
             <select {...register("specialty")}>
@@ -77,6 +80,7 @@ const DoctorCreationForm = () => {
                 </option>
               ))}
             </select>
+            {errors.specialty?.message}
           </div>
           <div className="input-container">
             <select {...register("gender")}>
@@ -86,6 +90,7 @@ const DoctorCreationForm = () => {
                 </option>
               ))}
             </select>
+            {errors.gender?.message}
           </div>
           <div className="doctors-creation-button-container">
             <button type="submit">submit</button>
