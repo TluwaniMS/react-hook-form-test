@@ -3,16 +3,13 @@ import "./LoginForm.css";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import ResponseHandler from "../response-handler/ResponseHandler";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN } from "../../mutations/login.mutation";
+import { Operations } from "../../display-support/operations-support";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faSignInAlt, faUndoAlt } from "@fortawesome/free-solid-svg-icons";
-
-import { LOGIN } from "../../mutations/login.mutation";
-import { useMutation } from "@apollo/client";
-
-import { Operations } from "../../display-support/operations-support";
-
+import ResponseHandler from "../response-handler/ResponseHandler";
 import SpinnerDisplay from "../spinner-display/SpinnerDisplay";
 
 const LoginForm = () => {
@@ -52,7 +49,6 @@ const LoginForm = () => {
   }
 
   if (error) {
-    console.log(error);
     return <div>There was an error authenticating this user</div>;
   }
 

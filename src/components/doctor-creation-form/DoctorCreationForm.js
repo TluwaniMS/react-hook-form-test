@@ -1,19 +1,18 @@
 import React from "react";
+import "./DoctorCreationForm.css";
 import * as yup from "yup";
-import ResponseHandler from "../response-handler/ResponseHandler";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserMd, faArrowLeft, faUndoAlt } from "@fortawesome/free-solid-svg-icons";
 import { specialties } from "../../display-support/specialties-support";
 import { genders } from "../../display-support/gender-support";
-import { CREATE_DOCTOR } from "../../mutations/doctor.mutation";
-import { useMutation } from "@apollo/client";
-import "./DoctorCreationForm.css";
-import SpinnerDisplay from "../spinner-display/SpinnerDisplay";
-
 import { Operations } from "../../display-support/operations-support";
+import { CREATE_DOCTOR } from "../../mutations/doctor.mutation";
+import ResponseHandler from "../response-handler/ResponseHandler";
+import SpinnerDisplay from "../spinner-display/SpinnerDisplay";
 
 const DoctorCreationForm = () => {
   const [createDoctor, { data, loading, error }] = useMutation(CREATE_DOCTOR);

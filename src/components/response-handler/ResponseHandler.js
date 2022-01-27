@@ -1,8 +1,8 @@
 import React from "react";
+import { Operations } from "../../display-support/operations-support";
+import { AuthenticationCheck } from "../../display-support/authenticaion-support";
 import ErrorDisplay from "../error-display/ErrorDisplay";
 import SuccessDisplay from "../success-display/SuccessDisplay";
-import { AuthenticationCheck } from "../../display-support/authenticaion-support";
-import { Operations } from "../../display-support/operations-support";
 
 const ResponseHandler = ({ operation, data }) => {
   let AuthenticationSuccessful;
