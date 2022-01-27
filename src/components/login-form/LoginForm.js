@@ -13,6 +13,8 @@ import { useMutation } from "@apollo/client";
 
 import { Operations } from "../../display-support/operations-support";
 
+import SpinnerDisplay from "../spinner-display/SpinnerDisplay";
+
 const LoginForm = () => {
   const [authenticateUserWithPassword, { data, loading, error }] = useMutation(LOGIN);
 
@@ -40,6 +42,10 @@ const LoginForm = () => {
   const navigateHome = () => {
     navigate("/");
   };
+
+  if (loading) {
+    return <SpinnerDisplay />;
+  }
 
   if (data) {
     return <ResponseHandler data={data.authenticateUserWithPassword.__typename} operation={Operations.Login} />;

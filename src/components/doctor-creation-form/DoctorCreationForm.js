@@ -11,8 +11,7 @@ import { genders } from "../../display-support/gender-support";
 import { CREATE_DOCTOR } from "../../mutations/doctor.mutation";
 import { useMutation } from "@apollo/client";
 import "./DoctorCreationForm.css";
-
-
+import SpinnerDisplay from "../spinner-display/SpinnerDisplay";
 
 import { Operations } from "../../display-support/operations-support";
 
@@ -54,6 +53,10 @@ const DoctorCreationForm = () => {
   const navigateHome = () => {
     navigate("/");
   };
+
+  if (loading) {
+    return <SpinnerDisplay />;
+  }
 
   if (data) {
     return <ResponseHandler data={data.createDoctor} operation={Operations.DoctorCreation} />;
@@ -110,7 +113,7 @@ const DoctorCreationForm = () => {
             {errors.specialty?.message}
           </div>
           <div className="input-container">
-            <select {...register("gender")} >
+            <select {...register("gender")}>
               <option value="" selected hidden>
                 select gender
               </option>
