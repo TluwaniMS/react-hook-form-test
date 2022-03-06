@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Dependencies:
+* APOLLO CLIENT
+* REACT FONT-AWESOME
+* HOOKFORM-RESOLVERS
+* GRAPHQL
+* REACT-HOOK-FORM
+* REACT-ROUTER-DOM
+* YUP
+
 ## Available Scripts
 
 In the project directory, you can run:
