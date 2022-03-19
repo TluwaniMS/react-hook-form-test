@@ -1,3 +1,6 @@
+# About Repository:
+This is a basic react-js project that I created to learn how to use react-hook-forms.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
